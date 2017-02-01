@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0">
+    <link href="../bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet">
+    <script src="../bower_components/corejs/dist/corejs.js"></script>
+    <title>SLOT SAGA</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#590000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        }
+
+    </style>
+</head>
+<body id="body">
+<div id="website">
+    <canvas id="canvas"></canvas>
+    <div id="html"></div>
+</div>
+<script>
+    cjs.navigator
+            .import('js/bootstrap.js')
+            .done(function (bootstrap) {
+                bootstrap();
+            });
+</script>
+</body>
+</html>

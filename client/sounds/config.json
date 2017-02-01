@@ -1,0 +1,8 @@
+{
+  "button-click": {
+    "url": "sounds/button.mp3"
+  },
+  "key-press": {
+    "url": "sounds/key.mp3"
+  }
+}

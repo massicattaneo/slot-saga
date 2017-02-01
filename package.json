@@ -1,0 +1,23 @@
+{
+  "name": "carmen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/massicattaneo/carmen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/massicattaneo/carmen/issues"
+  },
+  "homepage": "https://github.com/massicattaneo/carmen#readme",
+  "devDependencies": {
+    "bower": "^1.8.0"
+  }
+}

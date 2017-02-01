@@ -1,0 +1,42 @@
+.& {
+  width: 480px;
+  height: 360px;
+  background-color: $mainColor;
+  color: $mainTextColor;
+  display: none;
+  z-index: 10;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  transform-origin: 50% 50%;
+}
+
+.&.show {
+  display: block;
+}
+
+.& h3 {
+  margin: 5px 0 20px 0;
+}
+
+.& .text {
+min-height: 100px;
+}
+
+@keyframes show-& {
+  0% {transform: scale3d(0,0,1);}
+  100% {transform: scale3d(1,1,1);}
+}
+
+@keyframes hide-& {
+  0% {transform: scale3d(1,1,1);}
+  100% {transform: scale3d(0,0,1);}
+}
