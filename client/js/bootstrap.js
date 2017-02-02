@@ -22,10 +22,6 @@ function boostrap(imports) {
 
     return function () {
 
-        cjs.Component.registerStyleFunction('fromPixel', function (value) {
-            return eval(value)+'px';
-        });
-
         var screenManager = cjs.navigator.screenManager({width: config.gameWidth, height: config.gameHeight, rotateOnPortrait: true});
         screenManager.centered({selector: '#slot-wrapper', width: config.gameWidth, height: config.gameHeight});
         screenManager.top({selector: '#header-wrapper'});
@@ -41,7 +37,10 @@ function boostrap(imports) {
         audio.init(audioConfig);
 
         cjs.bus.addBus('UI');
-        cjs.bus.UI.on('button-click', function (o) {});
+        cjs.bus.UI.on('button-tap', function (o) {});
+        cjs.bus.UI.on('burger-tap', function (o) {
+            header.toggleBurger(o)
+        });
 
         register(config);
 

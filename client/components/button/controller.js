@@ -15,9 +15,9 @@ function controller() {
         var n = cjs.Need();
         var useBus = config.useBus === undefined ? true : config.useBus;
 
-        obj.change = function () {
+        obj.tap = function () {
             if (useBus) {
-                cjs.bus.UI.fire('button-click', {type: config.type, id: config.id});
+                cjs.bus.UI.fire('button-tap', {type: config.type, id: config.id});
             }
             n.resolve(config.type);
         };

@@ -11,18 +11,35 @@
 
 function register(imports) {
 
-    var buttonController = imports('components/button/controller.js');
-    var buttonTemplate = imports('components/button/template.html');
-    var buttonStyle = imports('components/button/style.scss');
+    var buttonC = imports('components/button/controller.js');
+    var buttonT = imports('components/button/template.html');
+    var buttonS = imports('components/button/style.scss');
+
+    var burgerC = imports('components/burger/controller.js');
+    var burgerT = imports('components/burger/template.html');
+    var burgerS = imports('components/burger/style.scss');
 
     return function (config) {
+
+        cjs.Component.registerStyleFunction('fromPixel', function (value) {
+            return eval(value)+'px';
+        });
 
         /** BUTTON **/
         cjs.Component.register({
             name: 'button',
-            controller: buttonController,
-            template: buttonTemplate,
-            style: buttonStyle,
+            controller: buttonC,
+            template: buttonT,
+            style: buttonS,
+            config: config
+        });
+
+        /** BURGER **/
+        cjs.Component.register({
+            name: 'burger',
+            controller: burgerC,
+            template: burgerT,
+            style: burgerS,
             config: config
         });
 

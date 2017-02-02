@@ -16,13 +16,17 @@ function controller(imports) {
 
     return function (config) {
         
-        var c = cjs.Component({
+        var obj = cjs.Component({
             template: template,
             style: style,
             config: config
         });
 
-        return c;
+        obj.toggleBurger = function (p) {
+            obj.get('burger').toggle(p);
+        };
+
+        return obj;
 
     }
 
