@@ -1,0 +1,11 @@
+.& {
+  color: $mainTextColor;
+  text-align: center;
+}
+.& .play {
+  top: fromPixel(($gameHeight - $buttonSize)/2);
+}
+.& .stop {
+  top: fromPixel(($gameHeight - $buttonSize)/2);
+  display: none;
+}

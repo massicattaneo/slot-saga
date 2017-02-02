@@ -1,18 +1,26 @@
 .& {
-  display: inline-block;
+  display: block;
+  position: relative;
+  left: fromPixel(-$buttonSize-20);
 }
 .& button {
-  width: auto;
-  height: 60px;
-  display: inline-block;
-  border-radius: 60px;
-  margin: 0 5px;
-  padding: 0 10px;
-  font-size: 20px;
-  color: $secondaryTextColor;
+  height: fromPixel($buttonSize);
+  width: fromPixel($buttonSize);
+  border-radius: fromPixel($buttonSize);
+  background-color: transparent;
+  display: block;
+  border: 4px solid $mainTextColor;
+  font-size: fromPixel($buttonSize/2);
+  color: $mainTextColor;
 }
-
+@keyframes press-button {
+  0% {transform: scale3d(1,1,1); color: #fff; border-color: #fff;}
+  37.5% {transform: scale3d(0.9,0.9,1); color: #333; border-color: #333;}
+  100% {transform: scale3d(1,1,1); color: #fff; border-color: #fff;}
+}
+.& button:active {
+  animation: press-button 200ms 1;
+}
 .& button:before {
   font-family: FontAwesome;
-  padding-right: 10px;
 }

@@ -1,3 +1,8 @@
 {
-  "gameName": "SLOT SAGA"
+  "gameName": "SLOT SAGA",
+  "mainTextColor": "#ffffff",
+  "mainColor": "#590000",
+  "buttonSize": 150,
+  "gameWidth": 1920,
+  "gameHeight": 1080
 }

@@ -1,0 +1,6 @@
+{
+  "basePath": "../images/",
+  "list": [
+    {"url": "logo.jpg", "tags": ["game"], "quality": ["hi", "low"], "size": 3725}
+  ]
+}
