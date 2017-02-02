@@ -1,6 +1,9 @@
 .& {
   color: $mainTextColor;
   text-align: center;
+  display: block;
+  position: relative;
+  left: fromPixel(-$buttonSize-20);
 }
 .& .play {
   top: fromPixel(($gameHeight - $buttonSize)/2);

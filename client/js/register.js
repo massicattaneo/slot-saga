@@ -19,6 +19,10 @@ function register(imports) {
     var burgerT = imports('components/burger/template.html');
     var burgerS = imports('components/burger/style.scss');
 
+    var spinC = imports('components/spin/controller.js');
+    var spinT = imports('components/spin/template.html');
+    var spinS = imports('components/spin/style.scss');
+
     return function (config) {
 
         cjs.Component.registerStyleFunction('fromPixel', function (value) {
@@ -43,6 +47,14 @@ function register(imports) {
             config: config
         });
 
+        /** SPIN **/
+        cjs.Component.register({
+            name: 'spin',
+            controller: spinC,
+            template: spinT,
+            style: spinS,
+            config: config
+        });
     }
 
 }
