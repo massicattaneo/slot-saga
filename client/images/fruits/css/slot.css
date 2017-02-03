@@ -1,0 +1,24 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker 
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:7d0597050d5379f82abd0de76b76bf35:72f781cc0762f4ba35c2a6989c256754:cd9998c5df78577a35266ed094696ca1$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(slot.png);}
+
+.bell {width:108px; height:108px; background-position: -1px -1px}
+.cherry {width:108px; height:108px; background-position: -111px -1px}
+.grapes {width:108px; height:108px; background-position: -221px -1px}
+.lemon {width:108px; height:108px; background-position: -331px -1px}
+.orange {width:108px; height:108px; background-position: -441px -1px}
+.pear {width:108px; height:108px; background-position: -551px -1px}
+.plum {width:108px; height:108px; background-position: -661px -1px}
+.quaterfoil {width:108px; height:108px; background-position: -771px -1px}
+.strawberry {width:108px; height:108px; background-position: -881px -1px}
+.watermelon {width:108px; height:108px; background-position: -991px -1px}

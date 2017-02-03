@@ -1,0 +1,27 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker 
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:be3a47957789132b9d7853b67c839e10:fec24c113d62f6a0a1101cc8f8febc6d:cd9998c5df78577a35266ed094696ca1$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(slot.png);}
+
+.a {width:108px; height:108px; background-position: -1px -1px}
+.eye {width:108px; height:108px; background-position: -111px -1px}
+.gold {width:108px; height:108px; background-position: -221px -1px}
+.j {width:108px; height:108px; background-position: -331px -1px}
+.k {width:108px; height:108px; background-position: -441px -1px}
+.mask {width:108px; height:108px; background-position: -551px -1px}
+.pyramid {width:108px; height:108px; background-position: -661px -1px}
+.q {width:108px; height:108px; background-position: -771px -1px}
+.sarcophagus {width:108px; height:108px; background-position: -881px -1px}
+.scarab {width:108px; height:108px; background-position: -991px -1px}
+.silver {width:108px; height:108px; background-position: -1101px -1px}
+.sphinx {width:108px; height:108px; background-position: -1211px -1px}
+.stone {width:108px; height:108px; background-position: -1321px -1px}
