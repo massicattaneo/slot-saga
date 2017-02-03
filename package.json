@@ -1,5 +1,5 @@
 {
-  "name": "carmen",
+  "name": "v",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,9 +14,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/massicattaneo/carmen/issues"
+    "url": "https://github.com/massicattaneo/slot-saga/issues"
   },
-  "homepage": "https://github.com/massicattaneo/carmen#readme",
+  "homepage": "https://github.com/massicattaneo/slot-saga#readme",
   "devDependencies": {
     "bower": "^1.8.0"
   }

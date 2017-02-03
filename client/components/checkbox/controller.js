@@ -1,28 +1,26 @@
 /*/
  ///////////////////////////////////////////////////////////////////////////
  Module: controller
- Created Date: 04 July 2016
+ Created Date: 02 January 2017
  Author: mcattaneo
 
  //////////////////////////////////////////////////////////////////////////////
  //       Copyright (c) 2016.
  //////////////////////////////////////////////////////////////////////////////
  */
-
 function controller() {
 
     return function (config) {
         var obj = {};
 
-        var isClosed = false;
+        var isChecked = true;
 
-        obj.tap = function (p) {
-            cjs.bus.AUDIO.fire('button-click');
-            cjs.bus.UI.fire('burger-tap', {open: isClosed = !isClosed});
-        };
-
-        obj.toggle = function (p) {
-            p.open ? obj.get().addStyle('open') : obj.get().removeStyle('open')
+        obj.tap =function () {
+            obj.get('button').get('button')
+                .removeStyle('fa-volume-up')
+                .removeStyle('fa-volume-off')
+                .addStyle(!isChecked ? 'fa-volume-up' : 'fa-volume-off');
+            cjs.bus.UI.fire('audio-toggle', {checked: isChecked = !isChecked});
         };
 
         return obj;

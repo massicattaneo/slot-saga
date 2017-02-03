@@ -11,13 +11,10 @@
   font-size: fromPixel($buttonSize/2);
   color: $mainTextColor;
 }
-@keyframes press-button {
+@keyframes press-& {
   0% {transform: scale3d(1,1,1); color: #fff; border-color: #fff;}
   37.5% {transform: scale3d(0.9,0.9,1); color: #333; border-color: #333;}
   100% {transform: scale3d(1,1,1); color: #fff; border-color: #fff;}
-}
-.& button:active {
-  animation: press-button 200ms 1;
 }
 .& button:before {
   font-family: FontAwesome;

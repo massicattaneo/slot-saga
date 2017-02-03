@@ -1,59 +1,50 @@
 .& {
-
-    background-color: transparent;
-    position: absolute;
-    top: fromPixel(10);
-    left: fromPixel(10);
-    display: inline-block;
-    width: fromPixel(125);
-    height: fromPixel(125);
-    z-index: 1;
-    transition: .3s;
-    cursor: pointer;
-    user-select: none;
-}
-
-
-.& .line-1 {
-    top: fromPixel(125/2 - 6 - 28);
-    transform-origin: 50% 50%;
-    transition: top .3s .6s ease, transform .3s ease;
-}
-
-.& .line-2 {
-    top: fromPixel(125/2 - 6);
-    transition: background .3s .6s ease;
-}
-
-.& .line-3 {
-    top: fromPixel(125/2 - 6 + 28);
-    transform-origin: 50% 50%;
-    transition: top .3s .6s ease, transform .3s ease;
-}
-
-
-.&.open .line-1 {
-        transition: top .3s ease, transform .3s .5s ease;
-        top: fromPixel(125/2 - 6);
-        transform: rotate3d(0,0,1,45deg);
-    }
-.&.open .line-2 {
-        transition: background .3s 0s ease;
-        background: transparent;
-    }
-.&.open .line-3 {
-        transition: top .3s ease, transform .3s .5s ease;
-        top: fromPixel(125/2 - 6);
-        transform: rotate3d(0,0,1,-45deg);
-    }
+  background-color: transparent;
+  position: absolute;
+  top: fromPixel(10);
+  left: fromPixel(20);
+  display: inline-block;
+  width: fromPixel(125);
+  height: fromPixel(125);
+  z-index: 1;
+  transition: .3s;
+  cursor: pointer;
+  user-select: none; }
 
 .& .line {
-    background: $mainTextColor;
-    display: inline-block;
-    margin: 0 fromPixel((125 - 100) / 2);
-    width: fromPixel(100);
-    height: fromPixel(12);
-    transition: 0.3s;
-    left: fromPixel(0);
-    position: absolute;
-}
+  background: white;
+  display: inline-block;
+  margin: 0 fromPixel(12);
+  width: fromPixel(100);
+  height: fromPixel(12);
+  transition: 0.3s;
+  left: 0;
+  position: absolute; }
+.&.open {
+  opacity: 1 !important; }
+.&.open .line-1 {
+  transition: top .3s ease, transform .3s .5s ease;
+  top: fromPixel(56);
+  transform: rotate3d(0, 0, 1, 45deg); }
+.&.open .line-2 {
+  -webkit-transition: background .3s 0s ease;
+  transition: background .3s 0s ease;
+  background: transparent; }
+.&.open .line-3 {
+  transition: top .3s ease, transform .3s .5s ease;
+  transition: top .3s ease, transform .3s .5s ease, -webkit-transform .3s .5s ease;
+  top: fromPixel(56);
+  transform: rotate3d(0, 0, 1, -45deg); }
+.& .line-1 {
+  top: fromPixel(28);
+  transform-origin: 50% 50%;
+  transition: top .3s .6s ease, transform .3s ease;
+  transition: top .3s .6s ease, transform .3s ease, -webkit-transform .3s ease; }
+.& .line-2 {
+  top: fromPixel(56);
+  transition: background .3s .6s ease; }
+.& .line-3 {
+  top: fromPixel(84);
+  transform-origin: 50% 50%;
+  transition: top .3s .6s ease, transform .3s ease;
+  transition: top .3s .6s ease, transform .3s ease, -webkit-transform .3s ease; }

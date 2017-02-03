@@ -23,6 +23,10 @@ function register(imports) {
     var spinT = imports('components/spin/template.html');
     var spinS = imports('components/spin/style.scss');
 
+    var checkboxC = imports('components/checkbox/controller.js');
+    var checkboxT = imports('components/checkbox/template.html');
+    var checkboxS = imports('components/checkbox/style.scss');
+
     return function (config) {
 
         cjs.Component.registerStyleFunction('fromPixel', function (value) {
@@ -53,6 +57,15 @@ function register(imports) {
             controller: spinC,
             template: spinT,
             style: spinS,
+            config: config
+        });
+
+        /** CHECKBOX **/
+        cjs.Component.register({
+            name: 'checkbox',
+            controller: checkboxC,
+            template: checkboxT,
+            style: checkboxS,
             config: config
         });
     }

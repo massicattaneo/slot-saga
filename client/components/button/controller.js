@@ -12,20 +12,26 @@ function controller() {
 
     return function (config) {
         var obj = {};
-        var n = cjs.Need();
-        var useBus = config.useBus === undefined ? true : config.useBus;
 
-        obj.tap = function () {
-            if (useBus) {
-                cjs.bus.UI.fire('button-tap', {type: config.type, id: config.id});
+        var canPress = true;
+
+        obj.tap = function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            if (canPress) {
+                cjs.bus.AUDIO.fire('button-click');
+                canPress = false;
+                obj.runAnimation('press', 200, 'button').done(function () {
+                    canPress = true;
+                    if (config.useBus) {
+                        var param = {type: config.type};
+                        cjs.bus.UI.fire('button-tap', param);
+                    }
+                    obj.get().fire('button-tap', param);
+                });
             }
-            n.resolve(config.type);
         };
 
-        obj.promise = function () {
-            return n;
-        };
-        
         return obj;
     }
 

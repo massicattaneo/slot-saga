@@ -6,9 +6,11 @@
   left: fromPixel(-$buttonSize-20);
 }
 .& .play {
+  position: relative;
   top: fromPixel(($gameHeight - $buttonSize)/2);
 }
 .& .stop {
+  position: relative;
   top: fromPixel(($gameHeight - $buttonSize)/2);
   display: none;
 }

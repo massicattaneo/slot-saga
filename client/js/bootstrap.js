@@ -35,11 +35,20 @@ function boostrap(imports) {
 
         var audio = cjs.Audio();
         audio.init(audioConfig);
+        cjs.bus.addBus('AUDIO');
+        cjs.bus.AUDIO.on('button-click', function (o) {audio.play('button-click')});
 
         cjs.bus.addBus('UI');
-        cjs.bus.UI.on('button-tap', function (o) {});
+        cjs.bus.UI.on('button-tap', function (o) {
+            console.log(o);
+        });
         cjs.bus.UI.on('burger-tap', function (o) {
-            header.toggleBurger(o)
+            header.toggleBurger(o);
+            console.log(o);
+        });
+        cjs.bus.UI.on('audio-toggle', function (o) {
+            o.checked ? audio.unmute() : audio.mute();
+            console.log(o);
         });
 
         register(config);
