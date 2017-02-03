@@ -14,6 +14,7 @@ function boostrap(imports) {
     var Header = imports('components/header/controller.js');
     var Footer = imports('components/footer/controller.js');
     var Buttons = imports('components/buttons/controller.js');
+    var Slot = imports('components/slot/controller.js');
     var PopUp = imports('components/pop-up/controller.js');
     var config = imports('js/config.json');
     var register = imports('js/register.js');
@@ -61,6 +62,11 @@ function boostrap(imports) {
 
         var buttons = Buttons(config);
         buttons.createIn('#buttons-wrapper');
+
+        var slot = Slot(config);
+        slot.createIn('#slot-wrapper');
+
+
 
         // var blackScreen = BlackScreen(config);
         // blackScreen.createIn(document.body);
