@@ -15,7 +15,7 @@ function controller() {
 
         obj.spin = function () {
             obj.items.items.forEach(function (o, i) {
-                setTimeout(o.rotate, (1000/12) * i)
+                setTimeout(o.rotate, (config.rotateTime/12) * i)
             });
         };
 

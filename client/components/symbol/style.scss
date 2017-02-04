@@ -1,28 +1,14 @@
 .& {
   width: fromPixel($symbolSize);
   height: fromPixel($symbolSize);
-  background: url(images/$symbolCategory/css/slot.png) no-repeat;
-  background-size: 1300%;
+  background: url(images/$symbolCategory/$id.png);
   position: absolute;
-  transform-origin: 0px 56px 180px;
+  transform-origin: 0px 0px -180px;
   backface-visibility: hidden;
-  transform: scale3d(2,2,2);;
+  transform: scale3d(2,2,2);
 }
 
 @keyframes rotate-& {
-  from {transform: rotate3d(1,0,0, 0deg) scale3d(2,2,2);}
-  to {transform: rotate3d(1,0,0, 360deg) scale3d(2,2,2);}
+  0% {transform: rotate3d(1,0,0, 360deg) scale3d(2,2,2);-webkit-filter: blur(1px)}
+  100% {transform: rotate3d(1,0,0, 0deg) scale3d(2,2,2);-webkit-filter: blur(1px)}
 }
-
-.&.egypt.a {background-position: -1px -1px}
-.&.egypt.eye {background-position: -111px -1px}
-.&.egypt.gold {background-position: -221px -1px}
-.&.egypt.j {background-position: -331px -1px}
-.&.egypt.k {background-position: -441px -1px}
-.&.egypt.mask {background-position: -551px -1px}
-.&.egypt.pyramid {background-position: -661px -1px}
-.&.egypt.q {background-position: -771px -1px}
-.&.egypt.sarcophagus {background-position: -881px -1px}
-.&.egypt.scarab {background-position: -966px -1px}
-.&.egypt.silver {background-position: -1080px -1px}
-.&.egypt.sphinx {background-position: -1190px -1px}

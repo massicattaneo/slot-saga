@@ -14,7 +14,7 @@ function controller() {
         var obj = {};
 
         obj.rotate = function () {
-            obj.runAnimation('rotate', {time: 1000, times: 'infinite'});
+            obj.runAnimation('rotate', {time: config.rotateTime, times: 'infinite'});
         };
         
         return obj;

@@ -23,7 +23,9 @@ function controller(imports) {
         });
 
         obj.spin = function () {
-            obj.get('reel-1').spin();
+            obj.items.items.forEach(function (o) {
+                o.spin();
+            });
         };
 
         return obj;

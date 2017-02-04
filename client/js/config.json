@@ -6,5 +6,6 @@
   "gameWidth": 1920,
   "gameHeight": 1080,
   "symbolSize": 108,
-  "symbolScale": 2
+  "symbolScale": 2,
+  "rotateTime": 700
 }

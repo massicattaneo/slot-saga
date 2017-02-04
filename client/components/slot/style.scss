@@ -11,3 +11,9 @@
   position: relative;
   background-color: rgba(0,0,0,0.1);
 }
+.& .reel {position: absolute;}
+.& .n1 {left: fromPixel(120);}
+.& .n2 {left: fromPixel(420);}
+.& .n3 {left: fromPixel(720);}
+.& .n4 {left: fromPixel(1020);}
+.& .n5 {left: fromPixel(1320);}
