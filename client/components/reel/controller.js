@@ -8,26 +8,18 @@
  //       Copyright (c) 2016.
  //////////////////////////////////////////////////////////////////////////////
  */
-
-function controller(imports) {
-
-    var template = imports('components/slot/template.html');
-    var style = imports('components/slot/style.scss');
+function controller() {
 
     return function (config) {
-        
-        var obj = cjs.Component({
-            template: template,
-            style: style,
-            config: config
-        });
+        var obj = {};
 
         obj.spin = function () {
-            obj.get('reel-1').spin();
+            obj.items.items.forEach(function (o, i) {
+                setTimeout(o.rotate, (1000/12) * i)
+            });
         };
 
         return obj;
-
     }
 
-};
+}

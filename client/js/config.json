@@ -4,5 +4,7 @@
   "mainColor": "#590000",
   "buttonSize": 150,
   "gameWidth": 1920,
-  "gameHeight": 1080
+  "gameHeight": 1080,
+  "symbolSize": 108,
+  "symbolScale": 2
 }

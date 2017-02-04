@@ -21,7 +21,7 @@ function controller() {
             if (canPress) {
                 cjs.bus.AUDIO.fire('button-click');
                 canPress = false;
-                obj.runAnimation('press', 200, 'button').done(function () {
+                obj.runAnimation('press', {time: 200, item: 'button'}).done(function () {
                     canPress = true;
                     if (config.useBus) {
                         var param = {type: config.type};
