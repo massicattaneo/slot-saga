@@ -11,11 +11,18 @@
 
 function model() {
 
-    return function () {
+    return function (config) {
         var obj = {};
+        var activeSlot = '';
+        var wheels = config.wheelsSettings;
 
         obj.spin = function() {
             return cjs.Need().resolve(getResults())
+        };
+
+        obj.draw = function (type) {
+            activeSlot = type;
+            return {wheelsConfig: wheels[type], type: type};
         };
 
         function extractNumber(start, end) {

@@ -5,7 +5,33 @@
   "buttonSize": 150,
   "gameWidth": 1920,
   "gameHeight": 1080,
-  "symbolSize": 108,
-  "symbolScale": 2,
-  "rotateTime": 700
+  "spinDelay": 100,
+  "symbolsNames": {
+    "egypt": ["a","eye","gold","j","k","mask","pyramid","q","sarcophagus","scarab","silver","sphinx","stone"],
+    "standard": ["3bar","bell","seven","cherry","grapes","money","1bar","2bar"],
+    "fruits": ["bell","cherry","grapes","lemon","orange","pear","plum","quaterfoil","strawberry","watermelon"]
+  },
+  "wheelsSettings": {
+    "fruits": [
+      [0,1,2,3,4,5,6,7,8,9],
+      [1,4,8,6,3,2,0,9,7,5],
+      [5,2,3,4,7,6,9,8,0,1],
+      [9,8,7,6,0,1,2,5,4,3],
+      [7,3,6,4,5,2,8,1,9,0]
+    ],
+    "egypt": [
+      [0,1,2,3,4,5,6,7,1,3],
+      [3,4,8,6,3,2,0,1,7,5],
+      [5,2,3,4,7,6,1,3,0,1],
+      [1,3,7,6,0,1,2,5,4,3],
+      [7,3,6,4,5,2,7,1,3,0]
+    ],
+    "standard": [
+      [0,1,2,3,4,1,0,2,1,3],
+      [1,4,0,3,0,2,0,1,2,1],
+      [3,2,3,4,0,1,2,3,0,1],
+      [1,0,2,4,0,1,2,1,4,3],
+      [1,3,2,4,0,2,3,1,2,0]
+    ]
+  }
 }

@@ -15,35 +15,53 @@ function controller(imports) {
     var style = imports('components/slot/style.scss');
 
     return function (config) {
-        var wheelsConfig = [
-            [0,1,2,3,4,5,6,7,8,9],
-            [1,4,8,6,3,2,0,9,7,5],
-            [5,2,3,4,7,6,9,8,0,1],
-            [9,8,7,6,0,1,2,5,4,3],
-            [7,3,6,4,5,2,8,1,9,0]
-        ];
         
+        var reels = [];
+        var reelsQueues = [];
+
         var obj = cjs.Component({
             template: template,
             style: style,
             config: config
         });
 
-        obj.draw = function () {
-            obj.items.forEach(function (o,k,i) {
-                o.draw(wheelsConfig[i]);
+        obj.draw = function (params) {
+            params.wheelsConfig.forEach(function (wheelConfig,i) {
+                var reel = cjs.Component.create('reel', {config: cjs.Object.extend({reelType: params.type},config)});
+                reel.createIn(obj.get('wrapper'));
+                reel.get().addStyle('n' + (i+1));
+                reel.draw(wheelConfig);
+                reels.push(reel);
             });
         };
+
+        function spin(o, i, stopAt) {
+            return function () {
+                return o.spin({stopAt: stopAt[i], delay: i* config.spinDelay});
+            }
+        }
+
+        function stop(o) {return o.stop}
 
         obj.spin = function (q, stopAt) {
-            obj.items.forEach(function (o,k,i) {
-                o.spin({stopAt: stopAt[i], delay: i*100});
+            var n = [];
+            reels.forEach(function (o,i) {
+                var need = cjs.Need([
+                    spin(o,i,stopAt),
+                    stop(o)
+                ]);
+                reelsQueues.push(need);
+                n.push(need.start());
             });
+            return cjs.Need(n);
         };
 
-        obj.stopAt = function (array) {
-            obj.items.forEach(function (o,k,i) {
-                o.stopAt(array[i]);
+        obj.stop = function () {
+            reelsQueues.forEach(function (q) {
+                q.reject();
+            });
+            reels.forEach(function (o) {
+                stop(o)();
             });
         };
 

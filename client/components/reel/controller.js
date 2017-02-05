@@ -12,26 +12,27 @@ function controller() {
 
     return function (config) {
         var obj = {};
-        var symbols = {
-            egypt: ['a','eye','gold','j','k','mask','pyramid','q','sarcophagus','scarab','silver','sphinx','stone'],
-            fruits: ['bell','cherry','grapes','lemon','orange','pear','plum','quaterfoil','strawberry','watermelon']
-        };
+        var symbols = config.symbolsNames;
         var position = 0;
         var reel;
         var reelType = config.reelType;
 
         obj.draw = function (c) {
-            obj.get().appendChild(createWheel(450, 158, symbols[reelType].length, orderSymbols(c)))
+            obj.get().appendChild(createWheel(450, 158, c.length, orderSymbols(c)))
         };
         obj.spin = function (params) {
             return cjs.Need([
                 delay(params.delay),
                 preSpin,
                 setStopPosition(params.stopAt),
-                spinFast,
-                postSpin,
-                setStyle
+                spinFast
             ]).start();
+        };
+        obj.stop = function () {
+            return cjs.Need([
+                stopSpin,
+                setStyle
+            ]).start()
         };
 
         function orderSymbols(c) {
@@ -74,8 +75,8 @@ function controller() {
             }
         }
         function preSpin() {return reel.runAnimation('startSpin-'+position+'-' + obj.getClassName(), {time: 400, times: 1, ease: 'ease-in'})}
-        function spinFast() {return reel.runAnimation('spin-' + obj.getClassName(), {time: 700, times: 5, ease: 'linear'})}
-        function postSpin() {return reel.runAnimation('stopSpin-'+position+'-' + obj.getClassName(), {time: 400, times: 1, ease: 'ease-out'})}
+        function spinFast() {return reel.runAnimation('spin-' + obj.getClassName(), {time: 700, times: 4, ease: 'linear'})}
+        function stopSpin() {return reel.runAnimation('stopSpin-'+position+'-' + obj.getClassName(), {time: 400, times: 1, ease: 'ease-out'})}
         function setStyle() {reel.addStyle({transform: 'rotateY('+position*36+'deg) rotateZ(0deg) rotateX(0deg)'}); return cjs.Need().resolve()}
         function setStopPosition(stop) {
             return function () {

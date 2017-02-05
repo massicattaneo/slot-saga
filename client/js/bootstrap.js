@@ -35,7 +35,7 @@ function boostrap(imports) {
         db.init();
         cjs.Component.injectDatabaseProxy(db);
 
-        var model = Model();
+        var model = Model(config);
 
         var audio = cjs.Audio();
         audio.init(audioConfig);
@@ -45,6 +45,7 @@ function boostrap(imports) {
         cjs.bus.addBus('UI');
         cjs.bus.UI.on('button-tap', function (o) {
             if (o.type === 'play') spin();
+            if (o.type === 'stop') stop();
         });
         cjs.bus.UI.on('burger-tap', function (o) {
             header.toggleBurger(o);
@@ -68,7 +69,7 @@ function boostrap(imports) {
 
         var slot = Slot(config);
         slot.createIn('#slot-wrapper');
-        slot.draw();
+        slot.draw(model.draw('standard'));
 
         function spin() {
             return cjs.Need([
@@ -76,6 +77,11 @@ function boostrap(imports) {
                 slot.spin
             ]).start();
         }
+
+        function stop() {
+            return slot.stop();
+        }
+
         // var blackScreen = BlackScreen(config);
         // blackScreen.createIn(document.body);
         //
