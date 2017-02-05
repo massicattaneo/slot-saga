@@ -81,10 +81,10 @@ function boostrap(imports) {
         function spin() {
             return cjs.Need([
                 buttons.hideSpin,
-                buttons.showStop,
                 model.spin,
                 function (q, a) {
-                    setTimeout(buttons.hideStop, 2000);
+                    setTimeout(buttons.showStop, 500);
+                    setTimeout(buttons.hideStop, 1500);
                     return cjs.Need().resolve(a);
                 },
                 slot.spin,
