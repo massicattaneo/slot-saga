@@ -7,10 +7,10 @@
 }
 .& .play {
   position: relative;
-  top: fromPixel(($gameHeight - $buttonSize)/2);
+  //top: fromPixel(($gameHeight - $buttonSize)/2);
 }
 .& .stop {
   position: relative;
-  top: fromPixel(($gameHeight - $buttonSize)/2);
-  display: none;
+  //top: fromPixel(($gameHeight - $buttonSize)/2);
+  //display: none;
 }

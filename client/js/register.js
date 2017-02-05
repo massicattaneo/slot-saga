@@ -31,10 +31,6 @@ function register(imports) {
     var reelT = imports('components/reel/template.html');
     var reelS = imports('components/reel/style.scss');
 
-    var symbolC = imports('components/symbol/controller.js');
-    var symbolT = imports('components/symbol/template.html');
-    var symbolS = imports('components/symbol/style.scss');
-
     return function (config) {
 
         cjs.Component.registerStyleFunction('fromPixel', function (value) {
@@ -83,15 +79,6 @@ function register(imports) {
             controller: reelC,
             template: reelT,
             style: reelS,
-            config: config
-        });
-
-        /** SYMBOL **/
-        cjs.Component.register({
-            name: 'symbol',
-            controller: symbolC,
-            template: symbolT,
-            style: symbolS,
             config: config
         });
 

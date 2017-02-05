@@ -65,7 +65,7 @@ function boostrap(imports) {
 
         var slot = Slot(config);
         slot.createIn('#slot-wrapper');
-
+        slot.draw();
 
 
         // var blackScreen = BlackScreen(config);
