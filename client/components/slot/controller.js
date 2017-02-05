@@ -36,8 +36,9 @@ function controller(imports) {
         };
 
         function spin(o, i, stopAt) {
+            var spinDelay = 100;
             return function () {
-                return o.spin({stopAt: stopAt[i], delay: i* config.spinDelay});
+                return o.spin({stopAt: stopAt[i], delay: i* spinDelay});
             }
         }
 

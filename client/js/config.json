@@ -5,7 +5,6 @@
   "buttonSize": 200,
   "gameWidth": 1920,
   "gameHeight": 1080,
-  "spinDelay": 100,
   "symbolsNames": {
     "egypt": ["a","eye","gold","j","k","mask","pyramid","q","sarcophagus","scarab","silver","sphinx","stone"],
     "standard": ["3bar","bell","seven","cherry","grapes","money","1bar","2bar"],
