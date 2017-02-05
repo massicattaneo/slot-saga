@@ -15,7 +15,7 @@ function controller() {
 
         obj.update = function (value) {
             var currency = new cjs.Currency(value);
-            obj.get('value').setValue(currency.format('i.fs'))
+            obj.get('value').setValue(currency.format('i.ffs'))
         };
 
         return obj;
