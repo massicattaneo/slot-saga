@@ -16,14 +16,22 @@ function controller(imports) {
 
     return function (config) {
         
-        var c = cjs.Component({
+        var obj = cjs.Component({
             template: template,
             style: style,
             config: config
         });
 
-        return c;
+        obj.updateBalance = function (value) {
+            obj.get('balance').update(value)
+        };
+        
+        obj.setBets = function (options) {
+            obj.get('dropdown').setOptions(options)    
+        };
+
+        return obj;
 
     }
 
-};
+}

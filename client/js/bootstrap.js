@@ -59,6 +59,9 @@ function boostrap(imports) {
                 })
             }
         });
+        cjs.bus.UI.on('bet-change', function (o) {
+            model.setActiveBetIndex(o.index);
+        });
         cjs.bus.UI.on('audio-toggle', function (o) {
             o.checked ? audio.unmute() : audio.mute();
         });
@@ -74,14 +77,22 @@ function boostrap(imports) {
         var buttons = Buttons(config);
         buttons.createIn('#buttons-wrapper');
 
+        var blackScreen = BlackScreen(config);
+        blackScreen.createIn(document.body);
+
         var slot = Slot(config);
         slot.createIn('#slot-wrapper');
         slot.draw(model.draw('fruits'));
 
+        function updateBalance(q,a) {
+            footer.updateBalance(model.getBalance());
+            return cjs.Need().resolve(a);
+        }
         function spin() {
             return cjs.Need([
                 buttons.hideSpin,
                 model.spin,
+                updateBalance,
                 function (q, a) {
                     setTimeout(buttons.showStop, 500);
                     setTimeout(buttons.hideStop, 1500);
@@ -91,7 +102,6 @@ function boostrap(imports) {
                 buttons.showSpin
             ]).start();
         }
-
         function stop() {
             return cjs.Need([
                 buttons.hideStop,
@@ -99,10 +109,6 @@ function boostrap(imports) {
                 buttons.showSpin
             ]).start();
         }
-
-        var blackScreen = BlackScreen(config);
-        blackScreen.createIn(document.body);
-
         function showPopUp(type) {
             var popUp = PopUp(cjs.Object.extend({popupType: type}, config));
             var container = cjs.Node('#pop-up-wrapper');
@@ -126,6 +132,9 @@ function boostrap(imports) {
             ]).start();
             return n;
         }
+
+        updateBalance();
+        footer.setBets(model.getBets());
 
     };
 }

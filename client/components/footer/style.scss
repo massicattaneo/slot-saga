@@ -20,3 +20,19 @@
   transform-origin: center;
   top: fromPixel(-25);
 }
+
+.& .balance, .& .dropdown {
+  position: absolute;
+  font-size: 50px;
+  line-height: 1;
+  padding: 40px;
+  margin: 20px;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 20px;
+  border: 1px solid white;
+  text-align: left;
+}
+
+.& .balance {  left: 300px; width: 800px }
+.& .dropdown {  left: 1300px; padding: 29px 40px; width: 400px;}
+.& .dropdown select {height: 69px;    vertical-align: middle;font-family: Frijole;font-size: 50px;}

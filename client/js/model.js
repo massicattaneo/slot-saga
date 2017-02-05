@@ -15,14 +15,30 @@ function model() {
         var obj = {};
         var activeSlot = '';
         var wheels = config.wheelsSettings;
+        var balance = 1000;
+        var bets = [1,5,10,25,100];
+        var activeBetIndex = 0;
 
         obj.spin = function() {
+            balance -= bets[activeBetIndex];
             return cjs.Need().resolve(getResults())
         };
 
         obj.draw = function (type) {
             activeSlot = type;
             return {wheelsConfig: wheels[type], type: type};
+        };
+
+        obj.getBalance = function () {
+            return balance;
+        };
+
+        obj.getBets = function () {
+            return bets;
+        };
+
+        obj.setActiveBetIndex = function (index) {
+            activeBetIndex = Number(index);
         };
 
         function extractNumber(start, end) {

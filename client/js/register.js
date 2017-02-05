@@ -27,6 +27,14 @@ function register(imports) {
     var reelT = imports('components/reel/template.html');
     var reelS = imports('components/reel/style.scss');
 
+    var balanceC = imports('components/balance/controller.js');
+    var balanceT = imports('components/balance/template.html');
+    var balanceS = imports('components/balance/style.scss');
+
+    var dropdownC = imports('components/dropdown/controller.js');
+    var dropdownT = imports('components/dropdown/template.html');
+    var dropdownS = imports('components/dropdown/style.scss');
+
     return function (config) {
 
         cjs.Component.registerStyleFunction('fromPixel', function (value) {
@@ -66,6 +74,24 @@ function register(imports) {
             controller: reelC,
             template: reelT,
             style: reelS,
+            config: config
+        });
+
+        /** BALANCE **/
+        cjs.Component.register({
+            name: 'balance',
+            controller: balanceC,
+            template: balanceT,
+            style: balanceS,
+            config: config
+        });
+
+        /** REEL **/
+        cjs.Component.register({
+            name: 'dropdown',
+            controller: dropdownC,
+            template: dropdownT,
+            style: dropdownS,
             config: config
         });
 
