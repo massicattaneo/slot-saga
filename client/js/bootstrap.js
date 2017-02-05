@@ -50,7 +50,14 @@ function boostrap(imports) {
         });
         cjs.bus.UI.on('burger-tap', function (o) {
             header.toggleBurger(o);
-            if (o.open) showPopUp('change-slot');
+            if (o.open) {
+                showPopUp('change-slot').done(function (type) {
+                    slot.remove();
+                    slot = Slot(config);
+                    slot.createIn('#slot-wrapper');
+                    slot.draw(model.draw(type));
+                })
+            }
         });
         cjs.bus.UI.on('audio-toggle', function (o) {
             o.checked ? audio.unmute() : audio.mute();
@@ -73,13 +80,24 @@ function boostrap(imports) {
 
         function spin() {
             return cjs.Need([
+                buttons.hideSpin,
+                buttons.showStop,
                 model.spin,
-                slot.spin
+                function (q, a) {
+                    setTimeout(buttons.hideStop, 2000);
+                    return cjs.Need().resolve(a);
+                },
+                slot.spin,
+                buttons.showSpin
             ]).start();
         }
 
         function stop() {
-            return slot.stop();
+            return cjs.Need([
+                buttons.hideStop,
+                slot.stop,
+                buttons.showSpin
+            ]).start();
         }
 
         var blackScreen = BlackScreen(config);

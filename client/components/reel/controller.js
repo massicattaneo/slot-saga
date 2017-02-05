@@ -75,7 +75,7 @@ function controller() {
             }
         }
         function preSpin() {return reel.runAnimation('startSpin-'+position+'-' + obj.getClassName(), {time: 400, times: 1, ease: 'ease-in'})}
-        function spinFast() {return reel.runAnimation('spin-' + obj.getClassName(), {time: 700, times: 4, ease: 'linear'})}
+        function spinFast() {return reel.runAnimation('spin-' + obj.getClassName(), {time: 700, times: 3, ease: 'linear'})}
         function stopSpin() {return reel.runAnimation('stopSpin-'+position+'-' + obj.getClassName(), {time: 400, times: 1, ease: 'ease-out'})}
         function setStyle() {reel.addStyle({transform: 'rotateY('+position*36+'deg) rotateZ(0deg) rotateX(0deg)'}); return cjs.Need().resolve()}
         function setStopPosition(stop) {

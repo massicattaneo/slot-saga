@@ -18,26 +18,26 @@ function controller(imports) {
 
         var types = {
             'change-slot': {
-                title: config.gameTitle,
-                text: '',
+                title: config.gameName,
+                text: 'SELECT A DIFFERENT SLOT TYPE:',
                 buttons: [
                     {
                         text: 'FRUITS SLOT',
                         type: 'fruits',
                         useBus: false,
-                        class: 'popup'
+                        class: 'pop-up-button'
                     },
                     {
                         text: 'EGYPT SLOT',
                         type: 'egypt',
                         useBus: false,
-                        class: 'popup'
+                        class: 'pop-up-button'
                     },
                     {
-                        text: 'SLOT',
+                        text: 'NORMAL SLOT',
                         type: 'standard',
                         useBus: false,
-                        class: 'popup'
+                        class: 'pop-up-button'
                     }
                 ]
             }

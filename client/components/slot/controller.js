@@ -63,6 +63,7 @@ function controller(imports) {
             reels.forEach(function (o) {
                 stop(o)();
             });
+            return cjs.Need().resolve();
         };
 
         return obj;

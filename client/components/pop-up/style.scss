@@ -25,10 +25,17 @@
 
 .& h3 {
   margin: 5px 0 20px 0;
+  font-size: fromPixel(150);
 }
 
 .& .text {
-min-height: 100px;
+  font-size: fromPixel(60);
+  min-height: 100px;
+}
+
+.& .pop-up-button {
+  display: inline-block;
+  margin: 50px;
 }
 
 .& button {

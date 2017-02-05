@@ -15,13 +15,33 @@ function controller(imports) {
 
     return function (config) {
         
-        var c = cjs.Component({
+        var obj = cjs.Component({
             template: template,
             style: style,
             config: config
         });
 
-        return c;
+        obj.hideSpin = function () {
+            obj.get('play').get().addStyle({display: 'none'});
+            return cjs.Need().resolve();
+        };
+
+        obj.showSpin = function () {
+            obj.get('play').get().addStyle({display: 'block'});
+            return cjs.Need().resolve();
+        };
+
+        obj.hideStop = function () {
+            obj.get('stop').get().addStyle({display: 'none'});
+            return cjs.Need().resolve();
+        };
+
+        obj.showStop = function () {
+            obj.get('stop').get().addStyle({display: 'block'});
+            return cjs.Need().resolve();
+        };
+
+        return obj;
 
     }
 
