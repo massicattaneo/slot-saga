@@ -24,18 +24,18 @@ function controller(imports) {
 
         c.show = function (time) {
             c.node.addStyle('show');
-            return c.runAnimation('show', isNaN(time) ? 500 : time);
+            return c.runAnimation('show', {time: isNaN(time) ? 500 : time});
         };
 
         c.hide = function (time) {
-            return c.runAnimation('hide', isNaN(time) ? 500 : time)
+            return c.runAnimation('hide', {time: isNaN(time) ? 500 : time})
                 .done(function() {
                 c.node.removeStyle('show');
             });
         };
 
         c.removeCover = function (time) {
-            return c.runAnimation('remove-cover', isNaN(time) ? 500 : time)
+            return c.runAnimation('remove-cover', {time: isNaN(time) ? 500 : time})
                 .done(function() {
                 c.node.removeStyle('cover');
             });

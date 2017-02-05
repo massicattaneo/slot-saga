@@ -26,6 +26,7 @@ function boostrap(imports) {
 
         var screenManager = cjs.navigator.screenManager({width: config.gameWidth, height: config.gameHeight, rotateOnPortrait: true});
         screenManager.centered({selector: '#slot-wrapper', width: config.gameWidth, height: config.gameHeight});
+        screenManager.centered({selector: '#pop-up-wrapper', width: config.gameWidth, height: config.gameHeight});
         screenManager.top({selector: '#header-wrapper'});
         screenManager.bottom({selector: '#footer-wrapper'});
         screenManager.right({selector: '#buttons-wrapper'});
@@ -49,11 +50,10 @@ function boostrap(imports) {
         });
         cjs.bus.UI.on('burger-tap', function (o) {
             header.toggleBurger(o);
-            console.log(o);
+            if (o.open) showPopUp('change-slot');
         });
         cjs.bus.UI.on('audio-toggle', function (o) {
             o.checked ? audio.unmute() : audio.mute();
-            console.log(o);
         });
 
         register(config);
@@ -69,7 +69,7 @@ function boostrap(imports) {
 
         var slot = Slot(config);
         slot.createIn('#slot-wrapper');
-        slot.draw(model.draw('standard'));
+        slot.draw(model.draw('fruits'));
 
         function spin() {
             return cjs.Need([
@@ -82,28 +82,32 @@ function boostrap(imports) {
             return slot.stop();
         }
 
-        // var blackScreen = BlackScreen(config);
-        // blackScreen.createIn(document.body);
-        //
-        // function showPopUp(type) {
-        //     var popUp = PopUp(cjs.Object.extend({type: type}, config));
-        //     popUp.createIn(document.body);
-        //     var n = cjs.Need();
-        //     cjs.Need([
-        //         blackScreen.show,
-        //         popUp.show,
-        //         function (q, whatToDo) {
-        //             n.resolve(whatToDo);
-        //             return cjs.Need().resolve();
-        //         },
-        //         popUp.hide,
-        //         function () {
-        //             blackScreen.hide();
-        //             document.body.removeChild(popUp.get().get())
-        //         }
-        //     ]).start();
-        //     return n;
-        // }
+        var blackScreen = BlackScreen(config);
+        blackScreen.createIn(document.body);
+
+        function showPopUp(type) {
+            var popUp = PopUp(cjs.Object.extend({popupType: type}, config));
+            var container = cjs.Node('#pop-up-wrapper');
+            container.addStyle({'z-index': 4});
+            popUp.createIn(container);
+            var n = cjs.Need();
+            cjs.Need([
+                blackScreen.show,
+                popUp.show,
+                function (q, whatToDo) {
+                    n.resolve(whatToDo);
+                    return cjs.Need().resolve();
+                },
+                popUp.hide,
+                function () {
+                    blackScreen.hide();
+                    container.addStyle({'z-index': 0});
+                    header.toggleBurger({open: false})
+                    container.get().removeChild(popUp.get().get())
+                }
+            ]).start();
+            return n;
+        }
 
     };
 }

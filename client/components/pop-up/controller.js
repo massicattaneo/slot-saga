@@ -17,33 +17,42 @@ function controller(imports) {
     return function (config) {
 
         var types = {
-            'delete-client': {
-                title: 'BORRAR?',
-                text: '¿Estás seguro de que quieres borrar este cliente?',
-                buttons: [{
-                    text: 'SI',
-                    type: 'delete',
-                    useBus: false,
-                    class: 'popup'
-                },{
-                    text: 'NO',
-                    type: 'close',
-                    useBus: false,
-                    class: 'popup'
-                }]
+            'change-slot': {
+                title: config.gameTitle,
+                text: '',
+                buttons: [
+                    {
+                        text: 'FRUITS SLOT',
+                        type: 'fruits',
+                        useBus: false,
+                        class: 'popup'
+                    },
+                    {
+                        text: 'EGYPT SLOT',
+                        type: 'egypt',
+                        useBus: false,
+                        class: 'popup'
+                    },
+                    {
+                        text: 'SLOT',
+                        type: 'standard',
+                        useBus: false,
+                        class: 'popup'
+                    }
+                ]
             }
         };
 
         var c = cjs.Component({
             template: template,
             style: style,
-            config: cjs.Object.extend(types[config.type], config)
+            config: cjs.Object.extend(types[config.popupType], config)
         });
 
         var buttons = [];
         var n = cjs.Need();
 
-        types[config.type].buttons.forEach(function (b, i) {
+        types[config.popupType].buttons.forEach(function (b, i) {
             buttons.push(cjs.Component.create('button', {config: b}));
             buttons[i].createIn(c.get('buttons').get());
             buttons[i].promise().done(function (type) {

@@ -1,6 +1,6 @@
 .& {
-  width: 480px;
-  height: 360px;
+  width: 1800px;
+  height: 1000px;
   background-color: $mainColor;
   color: $mainTextColor;
   display: none;
@@ -29,6 +29,10 @@
 
 .& .text {
 min-height: 100px;
+}
+
+.& button {
+  font-size: 30px;
 }
 
 @keyframes show-& {

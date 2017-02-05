@@ -19,10 +19,6 @@ function register(imports) {
     var burgerT = imports('components/burger/template.html');
     var burgerS = imports('components/burger/style.scss');
 
-    var spinC = imports('components/spin/controller.js');
-    var spinT = imports('components/spin/template.html');
-    var spinS = imports('components/spin/style.scss');
-
     var checkboxC = imports('components/checkbox/controller.js');
     var checkboxT = imports('components/checkbox/template.html');
     var checkboxS = imports('components/checkbox/style.scss');
@@ -52,15 +48,6 @@ function register(imports) {
             controller: burgerC,
             template: burgerT,
             style: burgerS,
-            config: config
-        });
-
-        /** SPIN **/
-        cjs.Component.register({
-            name: 'spin',
-            controller: spinC,
-            template: spinT,
-            style: spinS,
             config: config
         });
 

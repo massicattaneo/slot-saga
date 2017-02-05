@@ -12,7 +12,7 @@ function controller() {
 
     return function (config) {
         var obj = {};
-
+        var n = cjs.Need();
         var canPress = true;
 
         obj.tap = function (e) {
@@ -27,9 +27,14 @@ function controller() {
                         var param = {type: config.type};
                         cjs.bus.UI.fire('button-tap', param);
                     }
+                    n.resolve(config.type);
                     obj.get().fire('button-tap', param);
                 });
             }
+        };
+
+        obj.promise = function () {
+            return n;
         };
 
         return obj;

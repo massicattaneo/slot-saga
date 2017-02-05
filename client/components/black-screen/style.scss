@@ -4,6 +4,8 @@
 .&.show {
   display: block;
   opacity: 0.5;
+  background-color: black;
+  z-index:2;
 }
 .&.cover {
   display: block;

@@ -22,6 +22,7 @@ function controller() {
         };
 
         obj.toggle = function (p) {
+            isClosed = p.open;
             p.open ? obj.get().addStyle('open') : obj.get().removeStyle('open')
         };
 
