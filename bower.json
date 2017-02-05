@@ -1,18 +1,16 @@
 {
-  "name": "carmen",
-  "description": "",
-  "main": "index.js",
+  "name": "slot-saga",
+  "description": "HTML5/CSS3 slot games",
+  "main": "client/index.html",
   "authors": [
     "Max Cattaneo <massi.cattaneo.it@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/massicattaneo/carmen",
+  "homepage": "https://github.com/massicattaneo/slot-saga",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
   "dependencies": {
     "corejs": "https://github.com/massicattaneo/corejs.git",

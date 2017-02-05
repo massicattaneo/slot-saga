@@ -13,24 +13,19 @@ function controller() {
     return function (config) {
         var obj = {};
         var n = cjs.Need();
-        var canPress = true;
 
         obj.tap = function (e) {
             e.stopPropagation();
             e.preventDefault();
-            if (canPress) {
-                cjs.bus.AUDIO.fire('button-click');
-                canPress = false;
-                obj.runAnimation('press', {time: 200, item: 'button'}).done(function () {
-                    canPress = true;
-                    if (config.useBus) {
-                        var param = {type: config.type};
-                        cjs.bus.UI.fire('button-tap', param);
-                    }
-                    n.resolve(config.type);
-                    obj.get().fire('button-tap', param);
-                });
+            cjs.bus.AUDIO.fire('button-click');
+            if (config.useBus) {
+                var param = {type: config.type};
+                cjs.bus.UI.fire('button-tap', param);
             }
+            setTimeout(function () {
+                n.resolve(config.type);
+            }, 200);
+            obj.get().fire('button-tap', param);
         };
 
         obj.promise = function () {

@@ -62,12 +62,12 @@ function controller(imports) {
 
         c.show = function () {
             c.get().addStyle('show');
-            c.runAnimation('show', 500);
+            c.runAnimation('show', {time: 250});
             return n;
         };
 
         c.hide = function () {
-            return c.runAnimation('hide', 500);
+            return c.runAnimation('hide', {time: 250});
         };
 
         return c;

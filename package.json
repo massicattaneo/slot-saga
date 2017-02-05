@@ -1,7 +1,7 @@
 {
-  "name": "v",
+  "name": "slot-saga",
   "version": "1.0.0",
-  "description": "",
+  "description": "HTML5/CSS3 slot games",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/massicattaneo/carmen.git"
+    "url": "git+https://github.com/massicattaneo/slot-saga.git"
   },
-  "author": "",
+  "author": "Max Cattaneo <massi.cattaneo.it@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/massicattaneo/slot-saga/issues"

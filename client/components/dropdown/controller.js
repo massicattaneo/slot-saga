@@ -21,7 +21,7 @@ function controller() {
             var select = obj.get('select');
             options.forEach(function (o,i) {
                 var currency = new cjs.Currency(o);
-                select.appendChild(cjs.Node('<option value="'+i+'">'+ currency.format('i.ff')+'</option>'));
+                select.appendChild(cjs.Node('<option value="'+i+'">'+ currency.format('i.ffs')+'</option>'));
             })
         };
 

@@ -95,7 +95,7 @@ function boostrap(imports) {
                 updateBalance,
                 function (q, a) {
                     setTimeout(buttons.showStop, 500);
-                    setTimeout(buttons.hideStop, 1500);
+                    setTimeout(buttons.hideStop, 1600);
                     return cjs.Need().resolve(a);
                 },
                 slot.spin,

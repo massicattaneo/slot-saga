@@ -1,16 +1,14 @@
 SLOT SAGA
 =========
 
-Slot game saga: 
+HTML5/CSS3 slot games
 
 INSTALL THE PROJECT
 -------------------
-```
-npm install
-```
+```npm install```
 
 RUN THE PROJECT
 ---------------
-Easily load the client/index.html into a browser
+Easily open the client/index.html into a browser
 
-NB: Internet connection required for WEB FONTS
+**NB: Internet connection required for WEB FONTS**

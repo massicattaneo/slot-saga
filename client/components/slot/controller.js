@@ -53,16 +53,19 @@ function controller(imports) {
                 reelsQueues.push(need);
                 n.push(need.start());
             });
-            return cjs.Need(n);
+            return cjs.Need(n).done(function () {
+                reelsQueues = [];
+            });
         };
 
         obj.stop = function () {
-            reelsQueues.forEach(function (q) {
-                q.reject();
-            });
             reels.forEach(function (o) {
                 stop(o)();
             });
+            reelsQueues.forEach(function (q) {
+                q.reject();
+            });
+            reelsQueues = [];
             return cjs.Need().resolve();
         };
 
