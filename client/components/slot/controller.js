@@ -30,14 +30,20 @@ function controller(imports) {
         });
 
         obj.draw = function () {
-            obj.items.forEach(function (o) {
-                o.draw(wheelsConfig);
+            obj.items.forEach(function (o,k,i) {
+                o.draw(wheelsConfig[i]);
             });
         };
 
         obj.spin = function () {
-            obj.items.forEach(function (o) {
-                o.spin();
+            obj.items.forEach(function (o,k,i) {
+                setTimeout(o.spin, 100*i);
+            });
+        };
+
+        obj.stopAt = function (array) {
+            obj.items.forEach(function (o,k,i) {
+                o.stopAt(array[i]);
             });
         };
 

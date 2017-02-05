@@ -41,7 +41,8 @@ function boostrap(imports) {
 
         cjs.bus.addBus('UI');
         cjs.bus.UI.on('button-tap', function (o) {
-            o.type === 'play' && slot.spin();
+            console.log(o);
+            if (o.type === 'play') slot.spin();
         });
         cjs.bus.UI.on('burger-tap', function (o) {
             header.toggleBurger(o);

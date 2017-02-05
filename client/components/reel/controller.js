@@ -50,16 +50,26 @@ function controller() {
             fruits: ['bell','cherry','grapes','lemon','orange','pear','plum','quaterfoil','strawberry','watermelon']
         };
 
-        function oderSymbols() {
-
+        function orderSymbols(c) {
+            return c.map(function (index) {
+                return symbols[reelType][index]
+            })
         }
 
-        obj.draw = function (config) {
-            obj.get().get().appendChild(createWheel(450, 158, symbols[reelType].length, symbols[reelType]))
+        obj.draw = function (c) {
+            obj.get().get().appendChild(createWheel(450, 158, symbols[reelType].length, orderSymbols(c)))
         };
+
+        function preSpin() {return reel.runAnimation('preSpin', 500, 1, 'linear')}
+        function spin() {return reel.runAnimation('spin', 1000, 3, 'linear')}
+        function postSpin() {return reel.runAnimation('postSpin', 500, 1, 'linear')}
         
         obj.spin = function () {
-            reel.runAnimation('spin-'+obj.getClassName(), 500, 'infinite', 'linear')
+            return cjs.Need([
+                preSpin,
+                spin,
+                postSpin
+            ]).start();
         };
 
         return obj;
