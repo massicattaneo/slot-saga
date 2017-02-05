@@ -12,10 +12,33 @@ function controller() {
 
     return function (config) {
         var obj = {};
-
+        var symbols = {
+            egypt: ['a','eye','gold','j','k','mask','pyramid','q','sarcophagus','scarab','silver','sphinx','stone'],
+            fruits: ['bell','cherry','grapes','lemon','orange','pear','plum','quaterfoil','strawberry','watermelon']
+        };
+        var position = 0;
         var reel;
         var reelType = config.reelType;
 
+        obj.draw = function (c) {
+            obj.get().appendChild(createWheel(450, 158, symbols[reelType].length, orderSymbols(c)))
+        };
+        obj.spin = function (params) {
+            return cjs.Need([
+                delay(params.delay),
+                preSpin,
+                setStopPosition(params.stopAt),
+                spinFast,
+                postSpin,
+                setStyle
+            ]).start();
+        };
+
+        function orderSymbols(c) {
+            return c.map(function (index) {
+                return symbols[reelType][index]
+            })
+        }
         function createWheel(dia, height, sides, textures) {
             reel = cjs.Node('<div></div>');
             reel.addStyle('threedee assembly');
@@ -25,52 +48,41 @@ function controller() {
                 var x = Math.sin(sideAngle * c) * dia / 2;
                 var z = Math.cos(sideAngle * c) * dia / 2;
                 var ry = Math.atan2(x, z);
-                // tube.appendChild(createFace(sideLen + 1, height, x, 0, z, 0, ry, 0, textures, sideLen * c, 0));
-                reel.get().appendChild(createSymbol(sideLen + 1, height, x, 0, z, 0, ry, 0, textures[c]));
+                reel.appendChild(createSymbol(sideLen + 1, height, x, 0, z, 0, ry, 0, textures[c]));
             }
-            return reel.get();
+            return reel;
         }
-
         function createSymbol(w, h, x, y, z, rx, ry, rz, image) {
-            var face = document.createElement("div");
-            face.className = "threedee face";
-            face.style.cssText =
-                "background-image: url(images/"+reelType+"/" + image + ".png); " +
-                "width:" + w.toFixed(2) + "px;" +
-                "height:" + h.toFixed(2) + "px;" +
-                "margin-top: -" + (h / 2).toFixed(2) + "px;" +
-                "margin-left: -" + (w / 2).toFixed(2) + "px;" +
-                "transform: translate3d(" + x.toFixed(2) + "px," + y.toFixed(2) + "px," + z.toFixed(2) + "px)" +
-                "rotateX(" + rx.toFixed(2) + "rad) rotateY(" + ry.toFixed(2) + "rad) rotateY(" + rz.toFixed(2) + "rad) rotateZ(-90deg);";
-            return face;
+            var symbol = cjs.Node('<div></div>');
+            // var symbol = document.createElement("div");
+            symbol.addStyle("threedee face");
+            symbol.addStyle({
+                "background-image":"url(images/"+reelType+"/" + image + ".png)",
+                "width": w.toFixed(2) + "px",
+                "height": + h.toFixed(2) + "px",
+                "margin-top": - (h / 2).toFixed(2) + "px",
+                "margin-left": - (w / 2).toFixed(2) + "px",
+                "transform": "translate3d(" + x.toFixed(2) + "px," + y.toFixed(2) + "px," + z.toFixed(2) + "px) rotateX(" + rx.toFixed(2) + "rad) rotateY(" + ry.toFixed(2) + "rad) rotateY(" + rz.toFixed(2) + "rad) rotateZ(-90deg)"
+            });
+            return symbol;
         }
-
-        var symbols = {
-            egypt: ['a','eye','gold','j','k','mask','pyramid','q','sarcophagus','scarab','silver','sphinx','stone'],
-            fruits: ['bell','cherry','grapes','lemon','orange','pear','plum','quaterfoil','strawberry','watermelon']
-        };
-
-        function orderSymbols(c) {
-            return c.map(function (index) {
-                return symbols[reelType][index]
-            })
+        function delay(time) {
+            return function () {
+                var n = cjs.Need();
+                setTimeout(n.resolve, time);
+                return n;
+            }
         }
-
-        obj.draw = function (c) {
-            obj.get().get().appendChild(createWheel(450, 158, symbols[reelType].length, orderSymbols(c)))
-        };
-
-        function preSpin() {return reel.runAnimation('preSpin', 500, 1, 'linear')}
-        function spin() {return reel.runAnimation('spin', 1000, 3, 'linear')}
-        function postSpin() {return reel.runAnimation('postSpin', 500, 1, 'linear')}
-        
-        obj.spin = function () {
-            return cjs.Need([
-                preSpin,
-                spin,
-                postSpin
-            ]).start();
-        };
+        function preSpin() {return reel.runAnimation('startSpin-'+position+'-' + obj.getClassName(), {time: 400, times: 1, ease: 'ease-in'})}
+        function spinFast() {return reel.runAnimation('spin-' + obj.getClassName(), {time: 700, times: 5, ease: 'linear'})}
+        function postSpin() {return reel.runAnimation('stopSpin-'+position+'-' + obj.getClassName(), {time: 400, times: 1, ease: 'ease-out'})}
+        function setStyle() {reel.addStyle({transform: 'rotateY('+position*36+'deg) rotateZ(0deg) rotateX(0deg)'}); return cjs.Need().resolve()}
+        function setStopPosition(stop) {
+            return function () {
+                position = stop;
+                return cjs.Need().resolve();
+            }
+        }
 
         return obj;
     }

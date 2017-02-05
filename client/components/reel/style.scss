@@ -20,19 +20,109 @@
   background-repeat: no-repeat;
   background-color: rgba(0,0,0,1);
 }
-@keyframes preSpin {
+@keyframes startSpin-0-& {
   0% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
-  80% {transform: rotateY(-30deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(-36deg) rotateZ(0deg) rotateX(0deg);}
   100% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
 }
-@keyframes spin {
+@keyframes startSpin-1-& {
+  0% {transform: rotateY(36deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(36deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-2-& {
+  0% {transform: rotateY(72deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(36deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(72deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-3-& {
+  0% {transform: rotateY(108deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(72deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(108deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-4-& {
+  0% {transform: rotateY(144deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(108deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(144deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-5-& {
+  0% {transform: rotateY(180deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(144deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(180deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-6-& {
+  0% {transform: rotateY(216deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(180deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(216deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-7-& {
+  0% {transform: rotateY(252deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(216deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(252deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-8-& {
+  0% {transform: rotateY(288deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(252deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(288deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes startSpin-9-& {
+  0% {transform: rotateY(324deg) rotateZ(0deg) rotateX(0deg);}
+  80% {transform: rotateY(288deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(324deg) rotateZ(0deg) rotateX(0deg);}
+}
+
+@keyframes spin-& {
   0% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
   100% {transform: rotateY(360deg) rotateZ(0deg) rotateX(0deg);}
 }
-@keyframes postSpin {
+@keyframes stopSpin-0-& {
   0% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
-  20% {transform: rotateY(30deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(36deg) rotateZ(0deg) rotateX(0deg);}
   100% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
 }
-
+@keyframes stopSpin-1-& {
+  0% {transform: rotateY(36deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(72deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(36deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-2-& {
+  0% {transform: rotateY(72deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(108deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(72deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-3-& {
+  0% {transform: rotateY(108deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(144deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(108deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-4-& {
+  0% {transform: rotateY(144deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(180deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(144deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-5-& {
+  0% {transform: rotateY(180deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(216deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(180deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-6-& {
+  0% {transform: rotateY(216deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(252deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(216deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-7-& {
+  0% {transform: rotateY(252deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(288deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(252deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-8-& {
+  0% {transform: rotateY(288deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(324deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(288deg) rotateZ(0deg) rotateX(0deg);}
+}
+@keyframes stopSpin-9-& {
+  0% {transform: rotateY(324deg) rotateZ(0deg) rotateX(0deg);}
+  20% {transform: rotateY(360deg) rotateZ(0deg) rotateX(0deg);}
+  100% {transform: rotateY(324deg) rotateZ(0deg) rotateX(0deg);}
+}
 

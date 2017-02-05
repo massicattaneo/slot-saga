@@ -35,9 +35,9 @@ function controller(imports) {
             });
         };
 
-        obj.spin = function () {
+        obj.spin = function (q, stopAt) {
             obj.items.forEach(function (o,k,i) {
-                setTimeout(o.spin, 100*i);
+                o.spin({stopAt: stopAt[i], delay: i*100});
             });
         };
 
