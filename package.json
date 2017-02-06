@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "gulp serve",
     "postinstall": "bower install"
   },
   "repository": {
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/massicattaneo/slot-saga#readme",
   "devDependencies": {
-    "bower": "^1.8.0"
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-webserver": "^0.9.1"
   }
 }

@@ -9,6 +9,6 @@ INSTALL THE PROJECT
 
 RUN THE PROJECT
 ---------------
-Easily open the client/index.html into a browser
+```npm run serve```
 
-**NB: Internet connection required for WEB FONTS**
+Then open [THIS LINK](http://localhost:8080/client/index.html)
