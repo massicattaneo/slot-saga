@@ -12,12 +12,14 @@ function controller() {
 
     return function (config) {
         var obj = {};
-        var symbols = config.symbolsNames;
-        var position = 0;
+        var symbolsNames = config.symbolsNames;
+        var symbols = [];
+        var position = 10;
         var reel;
         var reelType = config.reelType;
 
         obj.draw = function (c) {
+            symbols = [];
             obj.get().appendChild(createWheel(450, 158, c.length, orderSymbols(c)))
         };
         obj.spin = function (params) {
@@ -34,10 +36,16 @@ function controller() {
                 setStyle
             ]).start()
         };
+        obj.win = function (symbolIndex, time) {
+            return cjs.Need([
+                delay(time),
+                win(symbolIndex)
+            ]).start();
+        };
 
         function orderSymbols(c) {
             return c.map(function (index) {
-                return symbols[reelType][index]
+                return symbolsNames[reelType][index]
             })
         }
         function createWheel(dia, height, sides, textures) {
@@ -49,16 +57,15 @@ function controller() {
                 var x = Math.sin(sideAngle * c) * dia / 2;
                 var z = Math.cos(sideAngle * c) * dia / 2;
                 var ry = Math.atan2(x, z);
-                reel.appendChild(createSymbol(sideLen + 1, height, x, 0, z, 0, ry, 0, textures[c]));
+                symbols.push(createSymbol(sideLen + 1, height, x, 0, z, 0, ry, 0, textures[c], reel));
             }
             return reel;
         }
-        function createSymbol(w, h, x, y, z, rx, ry, rz, image) {
-            var symbol = cjs.Node('<div></div>');
-            // var symbol = document.createElement("div");
-            symbol.addStyle("threedee face");
-            symbol.addStyle({
-                "background-image":"url(images/"+reelType+"/" + image + ".png)",
+        function createSymbol(w, h, x, y, z, rx, ry, rz, imageUrl, container) {
+            var symbol = cjs.Component.create('symbol', {config: config});
+            symbol.createIn(container);
+            symbol.get('image').addStyle({"background-image": "url(images/"+reelType+"/" + imageUrl + ".png)"});
+            symbol.get().addStyle({
                 "width": w.toFixed(2) + "px",
                 "height": + h.toFixed(2) + "px",
                 "margin-top": - (h / 2).toFixed(2) + "px",
@@ -82,6 +89,11 @@ function controller() {
             return function () {
                 position = stop;
                 return cjs.Need().resolve();
+            }
+        }
+        function win(index) {
+            return function () {
+                return symbols[index].runAnimation('win', {time: 1000, item: 'image'})
             }
         }
 

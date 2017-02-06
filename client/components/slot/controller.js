@@ -18,6 +18,7 @@ function controller(imports) {
         
         var reels = [];
         var reelsQueues = [];
+        var winnings;
 
         var obj = cjs.Component({
             template: template,
@@ -35,20 +36,12 @@ function controller(imports) {
             });
         };
 
-        function spin(o, i, stopAt) {
-            var spinDelay = 100;
-            return function () {
-                return o.spin({stopAt: stopAt[i], delay: i* spinDelay});
-            }
-        }
-
-        function stop(o) {return o.stop}
-
-        obj.spin = function (q, stopAt) {
+        obj.spin = function (q, params) {
             var n = [];
+            winnings = params.winnings;
             reels.forEach(function (o,i) {
                 var need = cjs.Need([
-                    spin(o,i,stopAt),
+                    spin(o,i, params.results),
                     stop(o)
                 ]);
                 reelsQueues.push(need);
@@ -70,8 +63,34 @@ function controller(imports) {
             return cjs.Need().resolve();
         };
 
+        obj.showWinnings = function () {
+            if (winnings.multiplier > 1) {
+                var ns = [], n = cjs.Need();
+                for (var i = 0; i < winnings.multiplier; i++) {
+                    ns.push(reels[i].win(winnings.indexes[i], i*100));
+                }
+                cjs.Need(ns).done(function () {
+                    n.resolve(winnings.value)
+                });
+                return n;
+            } else {
+                return cjs.Need().resolve(0);
+            }
+        };
+
+        function spin(o, i, stopAt) {
+            var spinDelay = 100;
+            return function () {
+                return o.spin({stopAt: stopAt[i], delay: i* spinDelay});
+            }
+        }
+
+        function stop(o) {
+            return o.stop
+        }
+
         return obj;
 
     }
 
-};
+}

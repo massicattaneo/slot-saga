@@ -15,12 +15,10 @@
   top: 50%;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  background-size: 80%;
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: rgba(148,97,97,0.5);
 }
-@keyframes startSpin-0-& {
+
+@keyframes startSpin-10-& {
   0% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
   80% {transform: rotateY(-36deg) rotateZ(0deg) rotateX(0deg);}
   100% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
@@ -75,7 +73,7 @@
   0% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
   100% {transform: rotateY(360deg) rotateZ(0deg) rotateX(0deg);}
 }
-@keyframes stopSpin-0-& {
+@keyframes stopSpin-10-& {
   0% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
   20% {transform: rotateY(36deg) rotateZ(0deg) rotateX(0deg);}
   100% {transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);}
@@ -125,4 +123,3 @@
   20% {transform: rotateY(360deg) rotateZ(0deg) rotateX(0deg);}
   100% {transform: rotateY(324deg) rotateZ(0deg) rotateX(0deg);}
 }
-

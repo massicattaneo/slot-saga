@@ -82,10 +82,15 @@ function boostrap(imports) {
 
         var slot = Slot(config);
         slot.createIn('#slot-wrapper');
-        slot.draw(model.draw('fruits'));
+        slot.draw(model.draw('standard'));
 
         function updateBalance(q,a) {
             footer.updateBalance(model.getBalance());
+            return cjs.Need().resolve(a);
+        }
+        function updateStopButton(q,a) {
+            setTimeout(buttons.showStop, 500);
+            setTimeout(buttons.hideStop, 2000);
             return cjs.Need().resolve(a);
         }
         function spin() {
@@ -93,12 +98,9 @@ function boostrap(imports) {
                 buttons.hideSpin,
                 model.spin,
                 updateBalance,
-                function (q, a) {
-                    setTimeout(buttons.showStop, 500);
-                    setTimeout(buttons.hideStop, 2000);
-                    return cjs.Need().resolve(a);
-                },
+                updateStopButton,
                 slot.spin,
+                showWinnings,
                 buttons.showSpin
             ]).start();
         }
@@ -106,8 +108,15 @@ function boostrap(imports) {
             return cjs.Need([
                 buttons.hideStop,
                 slot.stop,
+                showWinnings,
                 buttons.showSpin
             ]).start();
+        }
+        function showWinnings(q,a) {
+            return slot.showWinnings().done(function (value) {
+                model.addWinnings(value);
+                updateBalance()
+            })
         }
         function showPopUp(type) {
             var popUp = PopUp(cjs.Object.extend({popupType: type}, config));

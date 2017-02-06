@@ -21,7 +21,12 @@ function model() {
 
         obj.spin = function() {
             balance -= bets[activeBetIndex];
-            return cjs.Need().resolve(getResults())
+            var results = getResults();
+            console.log("RESULTS: ", results.map(function (e,i) {return config.symbolsNames[activeSlot][wheels[activeSlot][i][e]];}));
+            return cjs.Need().resolve({
+                results: results.map(function(o) {return Math.abs(o-10)}),
+                winnings: getWinnings(results)
+            })
         };
 
         obj.draw = function (type) {
@@ -41,6 +46,10 @@ function model() {
             activeBetIndex = Number(index);
         };
 
+        obj.addWinnings = function (value) {
+            balance += value;
+        };
+
         function extractNumber(start, end) {
             return Math.floor(Math.random() * end) + start;
         }
@@ -49,6 +58,23 @@ function model() {
             return [1,2,3,4,5].map(function () {
                 return extractNumber(0,10);
             });
+        }
+
+        function getWinnings(array) {
+            var multiplier = getMultiplier(array, 0);
+            return {
+                indexes: array,
+                multiplier: multiplier,
+                value: multiplier * bets[activeBetIndex]
+            }
+        }
+
+        function getMultiplier(array, start) {
+            if (wheels[activeSlot][start][array[start]] === wheels[activeSlot][start+1][array[start+1]]) {
+                return getMultiplier(array, start + 1);
+            } else {
+                return start + 1;
+            }
         }
 
         return obj;

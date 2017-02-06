@@ -35,6 +35,10 @@ function register(imports) {
     var dropdownT = imports('components/dropdown/template.html');
     var dropdownS = imports('components/dropdown/style.scss');
 
+    var symbolC = imports('components/symbol/controller.js');
+    var symbolT = imports('components/symbol/template.html');
+    var symbolS = imports('components/symbol/style.scss');
+
     return function (config) {
 
         cjs.Component.registerStyleFunction('fromPixel', function (value) {
@@ -86,12 +90,21 @@ function register(imports) {
             config: config
         });
 
-        /** REEL **/
+        /** DROPDOWN **/
         cjs.Component.register({
             name: 'dropdown',
             controller: dropdownC,
             template: dropdownT,
             style: dropdownS,
+            config: config
+        });
+
+        /** SYMBOL **/
+        cjs.Component.register({
+            name: 'symbol',
+            controller: symbolC,
+            template: symbolT,
+            style: symbolS,
             config: config
         });
 
