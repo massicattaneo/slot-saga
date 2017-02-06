@@ -65,7 +65,7 @@ function model() {
             return {
                 indexes: array,
                 multiplier: multiplier,
-                value: multiplier * bets[activeBetIndex]
+                value: bets[activeBetIndex] * Math.pow(2,multiplier)
             }
         }
 
