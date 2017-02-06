@@ -4,5 +4,14 @@
   },
   "key-press": {
     "url": "sounds/key.mp3"
+  },
+  "win": {
+    "url": "sounds/win.mp3"
+  },
+  "lose": {
+    "url": "sounds/lose.mp3"
+  },
+  "spinning": {
+    "url": "sounds/spinning.mp3"
   }
 }

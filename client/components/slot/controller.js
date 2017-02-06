@@ -38,6 +38,9 @@ function controller(imports) {
 
         obj.spin = function (q, params) {
             var n = [];
+            cjs.bus.AUDIO.fire('stop', {type: 'spinning'});
+            cjs.bus.AUDIO.fire('stop', {type: 'lose'});
+            cjs.bus.AUDIO.fire('play', {type: 'spinning'});
             winnings = params.winnings;
             reels.forEach(function (o,i) {
                 var need = cjs.Need([
@@ -53,6 +56,7 @@ function controller(imports) {
         };
 
         obj.stop = function () {
+            cjs.bus.AUDIO.fire('stop', {type: 'spinning'});
             reels.forEach(function (o) {
                 stop(o)();
             });
@@ -66,6 +70,7 @@ function controller(imports) {
         obj.showWinnings = function () {
             if (winnings.multiplier > 1) {
                 var ns = [], n = cjs.Need();
+                cjs.bus.AUDIO.fire('play', {type: 'win'});
                 for (var i = 0; i < winnings.multiplier; i++) {
                     ns.push(reels[i].win(winnings.indexes[i], i*100));
                 }
@@ -74,6 +79,7 @@ function controller(imports) {
                 });
                 return n;
             } else {
+                cjs.bus.AUDIO.fire('play', {type: 'lose'});
                 return cjs.Need().resolve(0);
             }
         };

@@ -17,7 +17,7 @@ function controller() {
         obj.tap = function (e) {
             e.stopPropagation();
             e.preventDefault();
-            cjs.bus.AUDIO.fire('button-click');
+            cjs.bus.AUDIO.fire('play', {type: 'button-click'});
             if (config.useBus) {
                 var param = {type: config.type};
                 cjs.bus.UI.fire('button-tap', param);

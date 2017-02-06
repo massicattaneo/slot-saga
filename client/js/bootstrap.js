@@ -41,7 +41,8 @@ function boostrap(imports) {
         var audio = cjs.Audio();
         audio.init(audioConfig);
         cjs.bus.addBus('AUDIO');
-        cjs.bus.AUDIO.on('button-click', function (o) {audio.play('button-click')});
+        cjs.bus.AUDIO.on('play', function (o) {audio.play(o.type)});
+        cjs.bus.AUDIO.on('stop', function (o) {audio.stop(o.type)});
 
         cjs.bus.addBus('UI');
         cjs.bus.UI.on('button-tap', function (o) {

@@ -17,7 +17,7 @@ function controller() {
         var isClosed = false;
 
         obj.tap = function (p) {
-            cjs.bus.AUDIO.fire('button-click');
+            cjs.bus.AUDIO.fire('play', {type: 'button-click'});
             cjs.bus.UI.fire('burger-tap', {open: isClosed = !isClosed});
         };
 
