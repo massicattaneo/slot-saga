@@ -90,8 +90,10 @@ function boostrap(imports) {
             return cjs.Need().resolve(a);
         }
         function updateStopButton(q,a) {
-            setTimeout(buttons.showStop, 500);
-            setTimeout(buttons.hideStop, 2000);
+            clearTimeout(updateStopButton.s);
+            clearTimeout(updateStopButton.h);
+            updateStopButton.s = setTimeout(buttons.showStop, 500);
+            updateStopButton.h = setTimeout(buttons.hideStop, 2000);
             return cjs.Need().resolve(a);
         }
         function spin() {
