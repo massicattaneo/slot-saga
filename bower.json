@@ -13,7 +13,7 @@
     "bower_components"
   ],
   "dependencies": {
-    "corejs": "https://github.com/massicattaneo/corejs.git",
+    "corejs": "https://github.com/massicattaneo/corejs.git#1.0.0",
     "components-font-awesome": "^4.6.3"
   }
 }
